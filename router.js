@@ -42,6 +42,7 @@ router.addRoute('/search', require('./routes/search.js'))
 router.addRoute('/login', require('./routes/login.js'))
 
 router.addRoute('/profile-edit', require('./routes/profile-edit.js'))
+router.addRoute('/profile-destroy', require('./routes/profile-destroy.js'))
 router.addRoute('/profile/:name', profRedir)
 router.addRoute('/profile', profRedir)
 router.addRoute('/~/:name', profRedir)

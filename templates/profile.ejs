@@ -13,12 +13,14 @@
 
   <h1>
   <%= showprofile.name %></h1>
+ 
   <%
   if (showprofile.isSelf) {
     %>
-    <p><a href=/profile-edit>Edit Profile</a> -
+    <p><a href=/profile-edit>Edit Profile</a> - 
       <a href=/password>Change Password</a> -
-      <a href="http://gravatar.com/emails/">Change Picture</a>
+      <a href="http://gravatar.com/emails/">Change Picture</a> -
+      <a href=/profile-destroy class=destory-profile>Delete Profile</a>
     </p>
     <%
   }

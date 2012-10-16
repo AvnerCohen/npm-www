@@ -48,6 +48,7 @@ function showProfile (req, res, showprofile) {
 
   var profile = req.model.profile
 
+
   var td = { showprofile: showprofile
            , profile: req.model.profile
            , fields: showprofile.fields
