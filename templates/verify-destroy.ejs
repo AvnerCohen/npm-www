@@ -1,0 +1,20 @@
+<%- include('header.ejs', locals) %>
+<h1>Confirm deletion</h1>
+
+  <%
+  if (error) {
+    %><p class=error>There was a problem!  The server said: <%= error %></p><%
+  }
+  %> 
+
+<form method=post action=/profile-destroy>
+  <input type=hidden name=_id value="<%= profile._id %>">
+  <input type=hidden name=name value="<%= profile.name %>">
+    <p><strong>Note:</strong> Profile deletion process is irreversible!</p>
+
+  <fieldset class=buttons>
+    <button class=btn type=submit>Delete!</button>
+  </fieldset>
+</form>
+
+<%- include('footer.ejs', locals) %>
