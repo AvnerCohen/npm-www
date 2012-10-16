@@ -5,7 +5,8 @@ function profile (req, required, cb) {
   if (typeof required === 'function') cb = required, required = false
   req.session.get('profile', function (er, data) {
     if (!required && er) er = null
-    if (er || data) return cb(er, req.profile = transform(data))
+
+    if (er || data) return cb(er, req.profile = setProfile(data))
 
     // if we're logged in, try to see if we can get it
     var name = req.cookies.get('name')
@@ -20,8 +21,21 @@ function profile (req, required, cb) {
       }
 
       req.session.set('profile', data, function () {
-        return cb(null, req.profile = transform(data))
+        return cb(null, req.profile = setProfile(data))
       })
     })
   })
+}
+
+//mutable to clean up or updated data from database, if required
+function prepareProfileData(data){
+  //Template will append "@", make sure db entry is sent out clean.
+  if (data && data.twitter)
+    data.twitter = data.twitter.replace(/(@?)(.*)/, "$2")
+
+  return data
+}
+
+function setProfile(data){
+  return transform(prepareProfileData(data))
 }
